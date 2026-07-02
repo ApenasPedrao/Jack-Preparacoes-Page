@@ -1,0 +1,836 @@
+:root {
+  color-scheme: dark;
+  --navy: #030140;
+  --gold: #a68a58;
+  --red: #730202;
+  --ink: #08080c;
+  --paper: #f4efe4;
+  --muted: #cfc8b8;
+  --line: rgba(244, 239, 228, 0.2);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  font-family: "Barlow", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  background: var(--ink);
+  color: var(--paper);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(166, 138, 88, 0.04) 0,
+      rgba(166, 138, 88, 0.04) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    var(--ink);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(3, 1, 64, 0.24), rgba(8, 8, 12, 0.88) 36rem),
+    transparent;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 76px;
+  padding: 0.8rem 5vw;
+  border-bottom: 1px solid rgba(244, 239, 228, 0.14);
+  background: rgba(3, 1, 64, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.75rem;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px rgba(115, 2, 2, 0.42);
+}
+
+.brand span {
+  display: grid;
+  min-width: 0;
+  line-height: 1;
+}
+
+.brand strong,
+.brand small,
+h1,
+h2,
+h3,
+.eyebrow,
+.service-card strong,
+.hero-meta span {
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.brand strong {
+  font-size: 1.75rem;
+}
+
+.brand small {
+  color: var(--gold);
+  font-size: 1.15rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  color: rgba(244, 239, 228, 0.82);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 0.45rem 0;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.header-cta,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  border-radius: 8px;
+  font-weight: 800;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.header-cta {
+  min-width: 136px;
+  padding: 0.7rem 1rem;
+  color: var(--ink);
+  background: var(--gold);
+}
+
+.button {
+  min-width: 190px;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid transparent;
+}
+
+.button-primary {
+  color: #090807;
+  background: var(--gold);
+  box-shadow: 0 18px 40px rgba(166, 138, 88, 0.28);
+}
+
+.button-ghost {
+  border-color: rgba(244, 239, 228, 0.28);
+  color: var(--paper);
+  background: rgba(244, 239, 228, 0.08);
+}
+
+.header-cta:hover,
+.button:hover,
+.text-link:hover,
+.contact-row:hover {
+  transform: translateY(-2px);
+}
+
+.header-cta:focus-visible,
+.button:focus-visible,
+.text-link:focus-visible,
+.nav-links a:focus-visible,
+.contact-row:focus-visible,
+.brand:focus-visible {
+  outline: 3px solid rgba(166, 138, 88, 0.7);
+  outline-offset: 4px;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 88svh;
+  padding: 8.25rem 5vw 4.5rem;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/assets/barbearia-hero.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-bg::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(3, 1, 64, 0.92) 0%, rgba(3, 1, 64, 0.67) 44%, rgba(8, 8, 12, 0.22) 100%),
+    linear-gradient(0deg, rgba(8, 8, 12, 0.86) 0%, transparent 42%);
+}
+
+.hero-content {
+  align-self: center;
+  width: min(760px, 100%);
+  padding-top: 1.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.75rem 0.26rem;
+  border-left: 5px solid var(--red);
+  color: var(--gold);
+  background: rgba(3, 1, 64, 0.68);
+  font-size: 1.24rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 9ch;
+  margin-bottom: 1rem;
+  font-size: 7rem;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-wrap: balance;
+  text-shadow: 0 16px 44px rgba(0, 0, 0, 0.62);
+}
+
+.hero-copy {
+  max-width: 600px;
+  margin-bottom: 2rem;
+  color: rgba(244, 239, 228, 0.88);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.hero-actions,
+.inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.hero-meta {
+  align-self: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 4rem;
+}
+
+.hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.38rem 0.75rem 0.3rem;
+  border: 1px solid rgba(244, 239, 228, 0.2);
+  border-radius: 8px;
+  color: var(--paper);
+  background: rgba(8, 8, 12, 0.46);
+  font-size: 1.18rem;
+}
+
+.section {
+  position: relative;
+  padding: 6rem 5vw;
+}
+
+section[id] {
+  scroll-margin-top: 92px;
+}
+
+.section-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.section h2 {
+  max-width: 760px;
+  margin-bottom: 1rem;
+  font-size: 4.2rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.section-copy,
+.section-heading p,
+.visual-copy p,
+.barber-card p,
+.step-card p,
+.contact-row span {
+  color: rgba(244, 239, 228, 0.76);
+  font-size: 1.05rem;
+}
+
+.section-app {
+  background:
+    linear-gradient(135deg, rgba(115, 2, 2, 0.22), transparent 32rem),
+    var(--ink);
+}
+
+.app-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  color: var(--gold);
+  font-weight: 800;
+  transition: transform 160ms ease;
+}
+
+.app-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.step-card,
+.service-card,
+.barber-card,
+.contact-row {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(244, 239, 228, 0.06);
+  box-shadow: var(--shadow);
+}
+
+.step-card {
+  min-height: 238px;
+  padding: 1.15rem;
+}
+
+.step-card svg,
+.barber-card svg,
+.contact-row svg {
+  color: var(--gold);
+  flex: 0 0 auto;
+}
+
+.step-card h3,
+.barber-card h3 {
+  margin: 1rem 0 0.45rem;
+  color: var(--paper);
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.section-visual {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.section-visual .eyebrow {
+  background: rgba(3, 1, 64, 0.09);
+  color: var(--red);
+}
+
+.section-visual h2,
+.section-visual p {
+  color: var(--ink);
+}
+
+.visual-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.85fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.image-panel {
+  min-height: 280px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #151515;
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.18);
+}
+
+.image-panel img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+}
+
+.image-panel-large {
+  grid-row: span 2;
+  min-height: 580px;
+}
+
+.visual-copy {
+  align-self: center;
+  padding: 1.25rem 0;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.service-card {
+  position: relative;
+  display: grid;
+  min-height: 194px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.service-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, var(--red), var(--gold));
+}
+
+.service-card span {
+  align-self: start;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(166, 138, 88, 0.36);
+  border-radius: 999px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.service-card h3 {
+  align-self: center;
+  margin: 1rem 0;
+  font-size: 2.25rem;
+  line-height: 0.98;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.service-card strong {
+  align-self: end;
+  color: var(--paper);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.section-barbers {
+  background:
+    linear-gradient(180deg, rgba(3, 1, 64, 0.95), rgba(8, 8, 12, 1)),
+    var(--navy);
+}
+
+.barber-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.2fr);
+  gap: 3rem;
+}
+
+.barber-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.barber-card {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 1rem;
+  min-height: 160px;
+  padding: 1.2rem;
+}
+
+.barber-card h3 {
+  margin-top: 0;
+}
+
+.barber-card strong {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+.section-contact {
+  background:
+    linear-gradient(125deg, rgba(166, 138, 88, 0.14), rgba(115, 2, 2, 0.18)),
+    #111116;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  align-items: center;
+  min-height: 82px;
+  padding: 1rem;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+div.contact-row {
+  grid-template-columns: 28px minmax(0, 1fr);
+}
+
+.contact-row strong {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--paper);
+}
+
+.contact-row span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.final-cta {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  padding: 6rem 5vw;
+  place-items: center;
+  isolation: isolate;
+}
+
+.final-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url("/assets/barbearia-corte.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.final-bg::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(0deg, rgba(8, 8, 12, 0.88), rgba(8, 8, 12, 0.72)),
+    repeating-linear-gradient(
+      -12deg,
+      rgba(166, 138, 88, 0.12) 0,
+      rgba(166, 138, 88, 0.12) 2px,
+      transparent 2px,
+      transparent 18px
+    );
+}
+
+.final-content {
+  width: min(880px, 100%);
+  text-align: center;
+}
+
+.final-content svg {
+  color: var(--gold);
+}
+
+blockquote {
+  margin: 1rem 0 0.65rem;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 4rem;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.final-content p {
+  margin-bottom: 2rem;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    min-height: 70px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+  }
+
+  .section h2 {
+    font-size: 3.4rem;
+  }
+
+  .app-layout,
+  .barber-layout,
+  .contact-layout,
+  .section-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .app-steps,
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-panel-large {
+    grid-row: auto;
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    gap: 0.75rem;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand strong {
+    font-size: 1.4rem;
+  }
+
+  .brand small {
+    font-size: 1rem;
+  }
+
+  .header-cta {
+    min-width: 48px;
+    padding: 0.68rem;
+    font-size: 0;
+  }
+
+  .header-cta svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hero {
+    min-height: 84svh;
+    padding: 7.4rem 1rem 3rem;
+  }
+
+  .hero-bg {
+    background-position: 57% center;
+  }
+
+  .hero-bg::after {
+    background:
+      linear-gradient(90deg, rgba(3, 1, 64, 0.94) 0%, rgba(3, 1, 64, 0.78) 64%, rgba(8, 8, 12, 0.36) 100%),
+      linear-gradient(0deg, rgba(8, 8, 12, 0.9) 0%, transparent 44%);
+  }
+
+  .eyebrow {
+    font-size: 1.05rem;
+  }
+
+  h1 {
+    max-width: 7ch;
+    font-size: 4.15rem;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+  }
+
+  .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .section {
+    padding: 4.4rem 1rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 82px;
+  }
+
+  .section h2 {
+    font-size: 2.85rem;
+  }
+
+  .app-steps,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card {
+    min-height: 178px;
+  }
+
+  .service-card {
+    min-height: 168px;
+  }
+
+  .service-card h3 {
+    font-size: 2rem;
+  }
+
+  .image-panel,
+  .image-panel-large {
+    min-height: 270px;
+  }
+
+  .barber-layout,
+  .contact-layout {
+    gap: 2rem;
+  }
+
+  .barber-card {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-row {
+    grid-template-columns: 26px minmax(0, 1fr);
+  }
+
+  .contact-row > svg:last-child {
+    display: none;
+  }
+
+  blockquote {
+    font-size: 2.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

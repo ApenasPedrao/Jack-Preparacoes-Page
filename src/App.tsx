@@ -14,6 +14,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import type { CSSProperties } from "react";
 import type { ReactNode } from "react";
 
 const appLink =
@@ -25,6 +26,15 @@ const address =
 const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   address,
 )}`;
+const assetPath = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+const heroBgStyle = {
+  "--hero-image": `url("${assetPath("assets/barbearia-hero.png")}")`,
+} as CSSProperties;
+
+const finalBgStyle = {
+  "--final-image": `url("${assetPath("assets/barbearia-corte.png")}")`,
+} as CSSProperties;
 
 const services = [
   { name: "Corte Degradê", category: "Cabelo", price: "R$40,00" },
@@ -101,7 +111,7 @@ export function App() {
     <main>
       <header className="site-header" aria-label="Navegacao principal">
         <a className="brand" href="#inicio" aria-label="Jackson Preparações">
-          <img src="/assets/jackson-logo.jpg" alt="" />
+          <img src={assetPath("assets/jackson-logo.jpg")} alt="" />
           <span>
             <strong>Jackson</strong>
             <small>Preparações</small>
@@ -122,7 +132,7 @@ export function App() {
       </header>
 
       <section id="inicio" className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-bg" style={heroBgStyle} aria-hidden="true" />
         <div className="hero-content">
           <p className="eyebrow">Barbearia de bairro • identidade street</p>
           <h1>Jackson Preparações</h1>
@@ -186,7 +196,7 @@ export function App() {
         <div className="section-inner visual-grid">
           <figure className="image-panel image-panel-large">
             <img
-              src="/assets/barbearia-detalhe.png"
+              src={assetPath("assets/barbearia-detalhe.png")}
               alt="Bancada de barbearia com máquinas, tesouras e pentes."
             />
           </figure>
@@ -201,7 +211,7 @@ export function App() {
           </div>
           <figure className="image-panel">
             <img
-              src="/assets/barbearia-corte.png"
+              src={assetPath("assets/barbearia-corte.png")}
               alt="Barbeiro usando máquina em um corte degradê."
             />
           </figure>
@@ -303,7 +313,7 @@ export function App() {
       </section>
 
       <section className="final-cta">
-        <div className="final-bg" aria-hidden="true" />
+        <div className="final-bg" style={finalBgStyle} aria-hidden="true" />
         <div className="final-content">
           <Sparkles size={26} aria-hidden="true" />
           <blockquote>

@@ -237,7 +237,7 @@ h3,
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url("/assets/barbearia-hero.png");
+  background-image: var(--hero-image);
   background-position: center;
   background-size: cover;
 }
@@ -622,7 +622,7 @@ div.contact-row {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: url("/assets/barbearia-corte.png");
+  background-image: var(--final-image);
   background-position: center;
   background-size: cover;
 }
